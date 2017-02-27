@@ -36,4 +36,15 @@ public class SetOfStacksTest {
         setOfStacks.pop();
         assertFalse(setOfStacks.isEmpty());
     }
+
+    @Test
+    void shouldPopAtIndexWhenCorrectIndex() {
+        assertThrows(SetOfStacks.IllegalElementException.class, () -> setOfStacks.popAt(5));
+        setOfStacks.push(1);
+        setOfStacks.push(2);
+        setOfStacks.push(3);
+        assertEquals(2, setOfStacks.popAt(1));
+        assertEquals(2, setOfStacks.piles());
+
+    }
 }

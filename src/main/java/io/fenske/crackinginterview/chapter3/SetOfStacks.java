@@ -64,5 +64,39 @@ public class SetOfStacks {
         return stackList.get(activeStackIndex);
     }
 
+    public int piles() {
+        return stackList.size();
+    }
+
+    public int popAt(int stackIndex) {
+        if (stackIndex >= stackList.size()) {
+            throw new IllegalElementException();
+        }
+        int poppedElement = getStack(stackIndex).pop();
+        while(hasNextStackOf(stackIndex)) {
+            leftShift(stackIndex);
+            ++stackIndex;
+            if (getStack(stackIndex).isEmpty()) {
+                shrink();
+            }
+        }
+        return poppedElement;
+    }
+
+    private void leftShift(int stackIndex) {
+        int firstPoppedElementOfNextStack = getStack(stackIndex + 1).removeFirst();
+        getStack(stackIndex).push(firstPoppedElementOfNextStack);
+    }
+
+    private LinkedList<Integer> getStack(int index) {
+        return stackList.get(index);
+    }
+
+    private boolean hasNextStackOf(int index) {
+        return index < stackList.size();
+    }
+
     public static class UnderflowException extends RuntimeException {}
+
+    public static class IllegalElementException extends RuntimeException {}
 }
