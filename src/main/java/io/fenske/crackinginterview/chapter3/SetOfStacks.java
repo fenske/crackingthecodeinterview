@@ -16,11 +16,15 @@ public class SetOfStacks {
     }
 
     public void push(int element) {
-        if (activeStack().size() < capacity) {
+        if (!isAtCapacity()) {
             activeStack().push(element);
         } else {
             expandAndPush(element);
         }
+    }
+
+    private boolean isAtCapacity() {
+        return activeStack().size() >= capacity;
     }
 
     private void expandAndPush(int element) {
