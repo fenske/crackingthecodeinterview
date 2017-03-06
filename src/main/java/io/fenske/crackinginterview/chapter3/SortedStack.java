@@ -3,36 +3,25 @@ package io.fenske.crackinginterview.chapter3;
 import java.util.LinkedList;
 
 public class SortedStack {
-    private final LinkedList<Integer> mainStack;
-    private final LinkedList<Integer> swapStack;
+    private final LinkedList<Integer> sortedStack;
 
-    public SortedStack(LinkedList<Integer> stack) {
-        mainStack = new LinkedList<>(stack);
-        swapStack = new LinkedList<>();
-        sort();
+    public SortedStack(LinkedList<Integer> unsortedStack) {
+        sortedStack = sort(unsortedStack);
     }
 
-    private void sort() {
-        while(!mainStack.isEmpty()) {
-            int topElement = mainStack.pop();
-            Integer secondTopElement = mainStack.peek();
-            if (secondTopElement != null && topElement > secondTopElement) {
-                secondTopElement = mainStack.pop();
-                swapStack.push(topElement);
-                while(!swapStack.isEmpty()) {
-                    mainStack.push(swapStack.pop());
-                }
-                mainStack.push(secondTopElement);
-            } else {
-                swapStack.push(topElement);
+    private LinkedList<Integer> sort(LinkedList<Integer> stack) {
+        LinkedList<Integer> swapStack = new LinkedList<>();
+        while(!stack.isEmpty()) {
+            int tmp = stack.pop();
+            while(!swapStack.isEmpty() && swapStack.peek() > tmp) {
+                stack.push(swapStack.pop());
             }
+            swapStack.push(tmp);
         }
-        while(!swapStack.isEmpty()) {
-            mainStack.push(swapStack.pop());
-        }
+        return swapStack;
     }
 
     public int pop() {
-        return mainStack.pop();
+        return sortedStack.pop();
     }
 }

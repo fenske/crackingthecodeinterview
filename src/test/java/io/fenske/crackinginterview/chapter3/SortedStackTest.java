@@ -17,11 +17,11 @@ public class SortedStackTest {
         unsortedStack.push(3);
 
         SortedStack sortedStack = new SortedStack(unsortedStack);
-        Assert.assertEquals(0, sortedStack.pop());
-        Assert.assertEquals(1, sortedStack.pop());
-        Assert.assertEquals(3, sortedStack.pop());
-        Assert.assertEquals(4, sortedStack.pop());
         Assert.assertEquals(6, sortedStack.pop());
+        Assert.assertEquals(4, sortedStack.pop());
+        Assert.assertEquals(3, sortedStack.pop());
+        Assert.assertEquals(1, sortedStack.pop());
+        Assert.assertEquals(0, sortedStack.pop());
 
     }
 }
