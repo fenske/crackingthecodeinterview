@@ -1,4 +1,4 @@
-package io.fenske.crackinginterview.chapter6;
+package io.fenske.crackinginterview.chapter5;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
