@@ -9,6 +9,7 @@ public class CountNumberOf2sTest {
 
   @Test
   public void shouldCountNumberOf2s() {
-    assertThat(CountNumberOf2s.getCountOfTwos(513), equalTo(202));
+    assertThat(CountNumberOf2s.getCountOfTwosRecursive(513), equalTo(202));
+    assertThat(CountNumberOf2s.getCountOfTwosIterative(513), equalTo(202));
   }
 }
