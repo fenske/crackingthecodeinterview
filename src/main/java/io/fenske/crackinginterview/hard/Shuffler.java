@@ -1,4 +1,4 @@
-package io.fenske.crackinginterview.moderate;
+package io.fenske.crackinginterview.hard;
 
 import java.util.Arrays;
 import java.util.Random;

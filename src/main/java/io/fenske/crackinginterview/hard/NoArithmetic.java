@@ -1,4 +1,4 @@
-package io.fenske.crackinginterview.moderate;
+package io.fenske.crackinginterview.hard;
 
 public class NoArithmetic {
   public static int add(int first, int second) {

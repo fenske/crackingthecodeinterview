@@ -1,4 +1,4 @@
-package io.fenske.crackinginterview.moderate;
+package io.fenske.crackinginterview.hard;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
