@@ -11,6 +11,8 @@ public class FindMinDistanceTest {
   public void shouldFindMinDistance() {
     String[] words = {"h", "b", "c", "a", "c", "a", "d", "b"};
     assertThat(FindMinDistance.getMinDistance(words, "a", "b"), equalTo(1));
+    assertThat(new FindMinDistance(words).getMinDistanceOptimized("a", "b"), equalTo(1));
     assertThat(FindMinDistance.getMinDistance(words, "d", "h"), equalTo(5));
+    assertThat(new FindMinDistance(words).getMinDistanceOptimized("d", "h"), equalTo(5));
   }
 }
