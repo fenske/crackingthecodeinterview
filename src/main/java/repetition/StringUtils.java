@@ -100,4 +100,13 @@ public class StringUtils {
       }
     }
   }
+
+  public static boolean isFirstRotationOfSecond(String first, String second) {
+    return isSubstring(first, second + second);
+  }
+
+  private static boolean isSubstring(String substr, String str) {
+    return str.indexOf(substr) > -1;
+  }
+
 }

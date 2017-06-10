@@ -1,6 +1,7 @@
 package repetition;
 
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertThat;
 
@@ -31,5 +32,11 @@ public class StringUtilsTest {
     char[] str = {'a','b','c',' ', 'd', 'e', ' ', 'f', '\0', '\\', '\\', '\\', '\\'};
     StringUtils.replaceWhitespaces(str, 8);
     assertArrayEquals(new char[]{'a','b','c', '%', '2', '0', 'd', 'e', '%', '2', '0', 'f', '\0'}, str);
+  }
+
+  @Test
+  public void shouldTellIfOneRotationOfAnother() {
+    assertThat(StringUtils.isFirstRotationOfSecond("watterbottle", "erbottlewatt"), is(true));
+    assertThat(StringUtils.isFirstRotationOfSecond("watterbottle", "erbottlewatta"), is(false));
   }
 }
