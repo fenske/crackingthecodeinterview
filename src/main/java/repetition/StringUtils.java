@@ -57,4 +57,47 @@ public class StringUtils {
     }
     return String.valueOf(Arrays.copyOf(str, tail));
   }
+
+  public static boolean areAnagrams(String s1, String s2) {
+    if (s1 == null || s2 == null) {
+      throw new IllegalArgumentException("Input strings cannot be null");
+    }
+    if (s1.length() != s2.length()) {
+      return false;
+    }
+    int[] ascii1 = new int[128];
+    for (int i = 0; i < s1.length(); i++) {
+      ascii1[s1.charAt(i)]++;
+    }
+    int[] ascii2 = new int[128];
+    for (int i = 0; i < s2.length(); i++) {
+      ascii2[s2.charAt(i)]++;
+    }
+    for (int i = 0; i < 128; i++) {
+      if (ascii1[i] != ascii2[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  public static void replaceWhitespaces(char[] str, int length) {
+    int whitespaceCount = 0;
+    for (int i = 0; i < length; i++) {
+      if (str[i] == ' ') {
+        whitespaceCount++;
+      }
+    }
+    int newLength = length + 2 * whitespaceCount;
+    str[newLength] = '\0';
+    for (int i = length - 1, j = newLength - 1; i >= 0; i--, j--) {
+      if (str[i] == ' ') {
+        str[j--] = '0';
+        str[j--] = '2';
+        str[j] = '%';
+      } else {
+        str[j] = str[i];
+      }
+    }
+  }
 }
