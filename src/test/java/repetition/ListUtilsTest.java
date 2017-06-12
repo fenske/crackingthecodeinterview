@@ -26,7 +26,7 @@ public class ListUtilsTest {
     e.next = f;
     f.next = g;
 
-    ListUtils.deleteDuplicates(a);
+    ListUtils.deleteDuplicates2(a);
 
     Assert.assertThat(a.next, CoreMatchers.equalTo(b));
     Assert.assertThat(b.next, CoreMatchers.equalTo(c));

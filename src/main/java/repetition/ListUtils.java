@@ -19,6 +19,30 @@ public class ListUtils {
     }
   }
 
+  public static void deleteDuplicates2(Node head) {
+    if (head == null) {
+      throw new IllegalArgumentException();
+    }
+    Node prev = head;
+    Node current = prev.next;
+    while(current != null) {
+      Node runner = head;
+      while(runner != current) {
+        if (runner.val == current.val) {
+          prev.next = current.next;
+          current = current.next;
+          break;
+        }
+        runner = runner.next;
+      }
+      if (runner == current) {
+        prev = current;
+        current = current.next;
+      }
+    }
+  }
+
+
   public static class Node {
     public int val;
     public Node next;
