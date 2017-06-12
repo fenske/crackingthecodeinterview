@@ -42,6 +42,24 @@ public class ListUtils {
     }
   }
 
+  public static int getNthToLast(Node head, int n) {
+    Node first = head;
+    Node second = head;
+    while (second != null && n > 0) {
+      second = second.next;
+      n--;
+    }
+    if (n != 0) {
+      throw new IllegalArgumentException("n must be smaller than the list length.");
+    }
+    while (second != null) {
+      second = second.next;
+      first = first.next;
+    }
+    return first.val;
+  }
+
+
 
   public static class Node {
     public int val;
