@@ -70,6 +70,46 @@ public class ListUtils {
     node.next = node.next.next;
   }
 
+  public static Node sumLists(Node a, Node b) {
+    if (a == null || b == null) {
+      throw new IllegalArgumentException("Both arguments have to be non-null.");
+    }
+    Node sumHead = null;
+    Node c = null;
+    int carry = 0;
+    while (a != null || b != null) {
+      int digit1 = 0;
+      int digit2 = 0;
+      if (a != null) {
+        digit1 = a.val;
+        a = a.next;
+      }
+      if (b != null) {
+        digit2 = b.val;
+        b = b.next;
+      }
+      int digitSum = digit1 + digit2 + carry;
+      if (digitSum > 9) {
+        carry = 1;
+        digitSum -= 10;
+      } else {
+        carry = 0;
+      }
+      if (sumHead == null) {
+        sumHead = new Node(digitSum);
+        c = sumHead;
+      } else {
+        c.next = new Node(digitSum);
+        c = c.next;
+      }
+    }
+    if (carry == 1) {
+      c.next = new Node(1);
+    }
+    return sumHead;
+  }
+
+
   public static class Node {
     public int val;
     public Node next;

@@ -81,4 +81,22 @@ public class ListUtilsTest {
 
     assertThat(b.next, is(d));
   }
+
+  @Test
+  public void shouldSumLists() {
+    Node a = new Node(3);
+    Node b = new Node(1);
+    Node c = new Node(5);
+    a.next = b;
+    b.next = c;
+
+    Node d = new Node(5);
+    Node e = new Node(9);
+    d.next = e;
+
+    Node sum = ListUtils.sumLists(a, d);
+    assertThat(sum.val, equalTo(8));
+    assertThat(sum.next.val, equalTo(0));
+    assertThat(sum.next.next.val, equalTo(6));
+  }
 }
