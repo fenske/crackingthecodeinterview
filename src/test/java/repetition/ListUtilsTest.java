@@ -1,6 +1,7 @@
 package repetition;
 
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
@@ -63,5 +64,21 @@ public class ListUtilsTest {
     a.next = b;
 
     ListUtils.getNthToLast(a, 3);
+  }
+
+  @Test
+  public void shouldDeleteNode() {
+    Node a = new Node(1);
+    Node b = new Node(2);
+    Node c = new Node(3);
+    Node d = new Node(4);
+
+    a.next = b;
+    b.next = c;
+    c.next = d;
+
+    ListUtils.deleteNode(c);
+
+    assertThat(b.next, is(d));
   }
 }

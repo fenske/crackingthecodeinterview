@@ -59,7 +59,16 @@ public class ListUtils {
     return first.val;
   }
 
-
+  public static void deleteNode(Node node) {
+    if (node == null) {
+      throw new IllegalArgumentException("Input node cannot be null");
+    }
+    if (node.next == null) {
+      throw new IllegalArgumentException("Last node cannot be removed");
+    }
+    node.val = node.next.val;
+    node.next = node.next.next;
+  }
 
   public static class Node {
     public int val;
