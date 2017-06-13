@@ -138,13 +138,16 @@ public class ListUtils {
     }
     Node slow = head;
     Node fast = head;
-    do {
+    while (fast.next != null) {
       slow = slow.next;
-      if (fast.next == null || fast.next.next == null) {
-        throw new IllegalArgumentException("No loop found");
-      }
       fast = fast.next.next;
-    } while (slow != fast);
+      if (slow == fast) {
+        break;
+      }
+    }
+    if (fast.next == null) {
+      throw new IllegalArgumentException("No loop found");
+    }
     slow = head;
     while (slow != fast) {
       slow = slow.next;
