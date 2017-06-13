@@ -132,6 +132,28 @@ public class ListUtils {
     return sumHead;
   }
 
+  public static int getLoopStart(Node head) {
+    if (head == null) {
+      throw new IllegalArgumentException("Input list cannot be null");
+    }
+    Node slow = head;
+    Node fast = head;
+    do {
+      slow = slow.next;
+      if (fast.next == null || fast.next.next == null) {
+        throw new IllegalArgumentException("No loop found");
+      }
+      fast = fast.next.next;
+    } while (slow != fast);
+    slow = head;
+    while (slow != fast) {
+      slow = slow.next;
+      fast = fast.next;
+    }
+    return slow.val;
+  }
+
+
 
   public static class Node {
     public int val;
