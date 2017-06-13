@@ -70,6 +70,32 @@ public class ListUtils {
     node.next = node.next.next;
   }
 
+
+  public static Node sumListsRecursively(Node a, Node b) {
+    return sumListsRecursively(a, b, 0);
+  }
+
+  private static Node sumListsRecursively(Node a, Node b, int carry) {
+    if (a == null && b == null) {
+      return null;
+    }
+    Node sum = new Node(carry);
+    int sumDigit = carry;
+    if (a != null) {
+      sumDigit += a.val;
+    }
+    if (b != null) {
+      sumDigit += b.val;
+    }
+    sum.val = sumDigit % 10;
+    Node more = sumListsRecursively(a == null ? null : a.next,
+                                    b == null ? null : b.next,
+                                    sumDigit / 10);
+    sum.next = more;
+    return sum;
+  }
+
+
   public static Node sumLists(Node a, Node b) {
     if (a == null || b == null) {
       throw new IllegalArgumentException("Both arguments have to be non-null.");

@@ -98,5 +98,11 @@ public class ListUtilsTest {
     assertThat(sum.val, equalTo(8));
     assertThat(sum.next.val, equalTo(0));
     assertThat(sum.next.next.val, equalTo(6));
+
+    Node recursiveSum = ListUtils.sumListsRecursively(a, d);
+    assertThat(recursiveSum.val, equalTo(8));
+    assertThat(recursiveSum.next.val, equalTo(0));
+    assertThat(recursiveSum.next.next.val, equalTo(6));
+
   }
 }
