@@ -80,4 +80,20 @@ public class MatrixUtilsTest {
     MatrixUtils.rotateBy90Degrees(matrix);
     Assert.assertArrayEquals(expected, matrix);
   }
+
+  @Test
+  public void shouldZeroRowAndColumn() {
+    int[][] matrix = {
+        {1,1,0,1,1},
+        {1,1,1,1,1},
+        {1,1,1,1,1}
+    };
+    int[][] expected = {
+        {0,0,0,0,0},
+        {1,1,0,1,1},
+        {1,1,0,1,1}
+    };
+    MatrixUtils.zeroRowAndColumn(matrix);
+    Assert.assertArrayEquals(expected, matrix);
+  }
 }
