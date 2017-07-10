@@ -25,4 +25,16 @@ public class ThreeStacksTest {
     assertThat(threeStacks.pop2(), equalTo(3));
     assertThat(threeStacks.pop3(), equalTo(6));
   }
+
+  @Test(expected = ThreeStacks.EmptyStackCapacityException.class)
+  public void shouldThrowUnderflowException() {
+    ThreeStacks threeStacks = new ThreeStacks(1);
+    threeStacks.pop1();
+  }
+
+  @Test(expected = ThreeStacks.FullStackCapacityException.class)
+  public void shouldThrowOverflowException() {
+    ThreeStacks threeStacks = new ThreeStacks(0);
+    threeStacks.push1(1);
+  }
 }
