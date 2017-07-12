@@ -42,6 +42,19 @@ public class SetOfStacks {
     return stacks.isEmpty();
   }
 
+  public int popAt(int index) {
+    if (index >= stacks.size()) {
+      throw new OutOfBoundsException();
+    }
+    int e = stacks.get(index).pop();
+    if (stacks.get(index).isEmpty()) {
+      stacks.remove(index);
+    }
+    return e;
+  }
+
   public class Underflow extends RuntimeException {}
+
+  public class OutOfBoundsException extends RuntimeException {}
 }
 
